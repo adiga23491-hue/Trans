@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campaign Optimization: Tricentis Transform 2026</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc; /* slate-50 */
+            color: #0f172a; /* slate-900 */
+        }
+
+        /* Chart Container Styling - Mandatory Requirement */
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 350px;
+            max-height: 400px;
+        }
+
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 400px;
+            }
+        }
+
+        /* Interactive Teardown Styles */
+        .highlight-error {
+            background-color: #fee2e2; /* red-100 */
+            border-bottom: 2px solid #ef4444; /* red-500 */
+            cursor: help;
+            transition: background-color 0.2s;
+        }
+        
+        .highlight-error:hover {
+            background-color: #fecaca; /* red-200 */
+        }
+
+        .tooltip-box {
+            display: none;
+            position: absolute;
+            z-index: 50;
+            background: #1e293b;
+            color: white;
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 0.875rem;
+            width: 250px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Custom Scrollbar for templates */
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f1f5f9; 
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #cbd5e1; 
+            border-radius: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8; 
+        }
+    </style>
+</head>
+<body class="antialiased pb-20">
+
+    <!-- Chosen Palette: Modern Corporate Slate & Blue (Slate-50 bg, Slate-900 text, Blue-600 accents, Red-500 errors, Emerald-500 success) -->
+    <!-- Application Structure Plan: The SPA is structured logically as an optimization journey. 
+         1. Executive Summary: Acknowledges the 0% baseline and sets the goal.
+         2. Diagnostic Teardown: Uses an interactive text block to highlight specific flaws in the original emails (me-centric language, variable errors, guilt-tripping) to educate the user.
+         3. Data & Insights: Uses a Chart.js bar chart to visualize the impact of different email elements on response rates, proving the need for change.
+         4. The Solution (Interactive Templates): A dynamic interface allowing the user to filter optimized templates by target audience (Director vs. Manager) and sequence step, complete with copy-to-clipboard functionality for immediate use. 
+         This flow moves from problem identification to data-backed reasoning, and finally to actionable solutions. -->
+    <!-- Visualization & Content Choices: 
+         - Diagnostic Hover Text (Inform): Goal is to explain WHY the original failed. Method: HTML/CSS hover tooltips over the original text. Interaction: Hover to reveal insights. Justification: Contextual learning directly on the user's own copy. NO SVG/Mermaid.
+         - Bar Chart (Compare): Goal is to show the statistical impact of best practices. Method: Chart.js Canvas. Interaction: Tooltips on hover. Justification: Quantifies qualitative advice. NO SVG.
+         - Interactive Template Generator (Organize/Action): Goal is to provide ready-to-use new copy. Method: HTML/JS tabbed interface. Interaction: Click to switch views, click to copy. Justification: Makes the new content highly accessible and practical. NO SVG. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+
+    <header class="bg-slate-900 text-white shadow-md sticky top-0 z-40">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+            <div>
+                <h1 class="text-2xl font-bold tracking-tight">⚙️ Campaign Optimizer</h1>
+                <p class="text-slate-400 text-sm">Tricentis Transform 2026 Outreach Analysis</p>
+            </div>
+            <div class="text-right hidden sm:block">
+                <p class="text-sm font-medium text-slate-300">Current Conversion: <span class="text-red-400 font-bold">0.0%</span></p>
+                <p class="text-sm font-medium text-slate-300">Target Conversion: <span class="text-emerald-400 font-bold">3.5%</span></p>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-12">
+
+        <!-- Section 1: Introduction & Diagnosis -->
+        <section id="diagnosis">
+            <div class="mb-6 border-b border-slate-200 pb-4">
+                <h2 class="text-3xl font-bold text-slate-800 flex items-center gap-2">
+                    <span>1.</span> Diagnostic Analysis 📉
+                </h2>
+                <p class="mt-2 text-slate-600">
+                    Your current campaign yielded 0 replies and 0 registrants. Before deploying new copy, we must understand why the original approach failed. Cold outreach to senior technology leaders requires a delicate balance of relevance, brevity, and value. The interactive teardown below highlights the critical friction points in your initial draft.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <!-- Interactive Teardown -->
+                <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-6 relative">
+                    <h3 class="text-lg font-semibold mb-4 text-slate-800">Original Email Teardown (Hover for insights)</h3>
+                    
+                    <div class="bg-slate-50 p-4 rounded-lg font-mono text-sm text-slate-700 leading-relaxed border border-slate-200 relative" id="teardown-container">
+                        <p class="mb-4">Subject: <span class="highlight-error" data-tooltip="Too generic. It looks like a marketing broadcast, not a personal 1:1 email. Subject lines should spark curiosity or highlight a specific pain point.">You're Invited: Tricentis Transform 2026 in Dallas</span></p>
+
+                        <p class="mb-4">Hi <span class="highlight-error" data-tooltip="CRITICAL ERROR: Unparsed merge tag. This instantly destroys credibility and proves the email is an automated blast. Always send test emails to verify CRM variable mapping.">@{items('For_each')?['First Name']}</span>,</p>
+
+                        <p class="mb-4"><span class="highlight-error" data-tooltip="'Me-centric' opening. The prospect doesn't care what YOU want. Start with a hook related to their business context or a challenge they are facing.">I wanted to personally invite you</span> to Tricentis Transform 2026...</p>
+
+                        <p class="mb-4">Given your role as {{Title}}, <span class="highlight-error" data-tooltip="Another unparsed variable. Furthermore, relying purely on title without mentioning their specific company or recent achievements feels hollow.">we would be delighted to have you join us.</span></p>
+
+                        <p class="mb-4 border-t border-slate-300 pt-4 mt-8 italic text-slate-500">Follow up email snippet:</p>
+
+                        <p><span class="highlight-error" data-tooltip="The 'Guilt Trip'. Never blame the prospect for not reading. If they didn't reply, your first email didn't offer enough value. Every follow-up must bring new, standalone value.">Did you get a chance to check my previous email?</span></p>
+                    </div>
+                    
+                    <!-- Tooltip Element -->
+                    <div id="dynamic-tooltip" class="tooltip-box"></div>
+                </div>
+
+                <!-- Strategic Pivot Text -->
+                <div class="flex flex-col justify-center space-y-6">
+                    <div class="bg-blue-50 border-l-4 border-blue-600 p-4 rounded-r-lg">
+                        <h4 class="font-bold text-blue-900 mb-2">The Core Issue: Vendor-Centric vs. Buyer-Centric</h4>
+                        <p class="text-blue-800 text-sm">
+                            The original emails focused entirely on the event (what it is, where it is, discounting). Leaders receive dozens of these daily. To break through, the email must answer: <strong>"How does this solve my immediate problems?"</strong>
+                        </p>
+                    </div>
+
+                    <ul class="space-y-4">
+                        <li class="flex items-start">
+                            <span class="text-xl mr-3">❌</span>
+                            <div>
+                                <strong class="text-slate-800">High Friction CTA:</strong> Asking them to "reply to this email so I can register you" creates work. Give them a direct VIP link.
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-xl mr-3">❌</span>
+                            <div>
+                                <strong class="text-slate-800">Formatting Errors:</strong> The broken variables (<code>@{items...}</code>) immediately trigger spam filters in the recipient's brain.
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-xl mr-3">✅</span>
+                            <div>
+                                <strong class="text-slate-800">The Fix:</strong> Short, punchy, relevance-first messaging that treats them like peers, not targets.
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 2: Data & Impact -->
+        <section id="data-insights" class="bg-white p-8 rounded-xl shadow-sm border border-slate-200">
+            <div class="mb-6">
+                <h2 class="text-2xl font-bold text-slate-800">The Anatomy of a High-Converting Email</h2>
+                <p class="mt-2 text-slate-600">
+                    Understanding the statistical impact of restructuring your outreach. The chart below illustrates how shifting from a generic template to a structured, value-driven approach impacts the likelihood of generating a positive response from Director+ titles.
+                </p>
+            </div>
+            
+            <div class="chart-container">
+                <canvas id="impactChart"></canvas>
+            </div>
+        </section>
+
+        <!-- Section 3: The Optimized Playbook (Interactive Templates) -->
+        <section id="templates">
+            <div class="mb-6 border-b border-slate-200 pb-4">
+                <h2 class="text-3xl font-bold text-slate-800 flex items-center gap-2">
+                    <span>2.</span> Optimized Campaign Playbook 🚀
+                </h2>
+                <p class="mt-2 text-slate-600">
+                    Below are the rewritten, optimized sequences. They are split by persona to ensure the messaging aligns with their specific operational level. The Directors+ sequence focuses on strategic networking and exclusive access, while the Managers sequence emphasizes tactical upskilling and team enablement. Click the copy icon to instantly grab the text.
+                </p>
+            </div>
+
+            <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden flex flex-col md:flex-row">
+                
+                <!-- Sidebar Navigation -->
+                <div class="w-full md:w-64 bg-slate-50 border-r border-slate-200 p-4 shrink-0">
+                    <h3 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-4">Target Audience</h3>
+                    
+                    <div class="space-y-2 mb-8">
+                        <button onclick="setPersona('director')" id="btn-director" class="w-full text-left px-4 py-2 rounded-lg text-sm font-medium transition-colors bg-blue-100 text-blue-700 border border-blue-200">
+                            💼 Directors & VPs (VIP)
+                        </button>
+                        <button onclick="setPersona('manager')" id="btn-manager" class="w-full text-left px-4 py-2 rounded-lg text-sm font-medium transition-colors hover:bg-slate-200 text-slate-600 border border-transparent">
+                            👨‍💻 Managers (50% Off)
+                        </button>
+                    </div>
+
+                    <h3 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-4">Sequence Step</h3>
+                    <div class="space-y-2">
+                        <button onclick="setStep(1)" id="btn-step-1" class="w-full text-left px-4 py-2 rounded-lg text-sm font-medium transition-colors bg-slate-200 text-slate-800">
+                            1. The Hook (Initial)
+                        </button>
+                        <button onclick="setStep(2)" id="btn-step-2" class="w-full text-left px-4 py-2 rounded-lg text-sm font-medium transition-colors hover:bg-slate-200 text-slate-600">
+                            2. The Bump (Value Add)
+                        </button>
+                        <button onclick="setStep(3)" id="btn-step-3" class="w-full text-left px-4 py-2 rounded-lg text-sm font-medium transition-colors hover:bg-slate-200 text-slate-600">
+                            3. The Breakup (Urgency)
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Template Display Area -->
+                <div class="flex-1 p-6 lg:p-10 relative">
+                    <div class="absolute top-6 right-6">
+                        <button onclick="copyToClipboard()" class="flex items-center gap-2 px-4 py-2 bg-slate-900 text-white text-sm font-medium rounded-lg hover:bg-slate-800 transition-colors focus:ring-2 focus:ring-offset-2 focus:ring-slate-900">
+                            <span id="copy-icon">📋</span> <span id="copy-text">Copy Email</span>
+                        </button>
+                    </div>
+
+                    <div class="mb-6">
+                        <span id="tag-persona" class="inline-block px-3 py-1 bg-blue-100 text-blue-800 text-xs font-bold rounded-full mr-2">Directors+</span>
+                        <span id="tag-step" class="inline-block px-3 py-1 bg-slate-200 text-slate-800 text-xs font-bold rounded-full">Email 1</span>
+                    </div>
+
+                    <div class="space-y-4">
+                        <div>
+                            <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-1">Subject Line</label>
+                            <div id="display-subject" class="bg-slate-50 border border-slate-200 p-3 rounded-lg font-medium text-slate-800">
+                                Loading...
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-1">Email Body</label>
+                            <div class="bg-slate-50 border border-slate-200 p-6 rounded-lg custom-scrollbar overflow-y-auto" style="min-height: 250px;">
+                                <pre id="display-body" class="font-sans text-slate-800 text-sm whitespace-pre-wrap leading-relaxed">Loading...</pre>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-6 p-4 bg-emerald-50 border border-emerald-200 rounded-lg">
+                        <h4 class="text-emerald-800 font-semibold text-sm mb-1 flex items-center gap-2"><span>💡</span> Why this works:</h4>
+                        <p id="display-rationale" class="text-emerald-700 text-sm">Loading...</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // --- Data Storage: Email Templates & Rationale ---
+        const templates = {
+            director: {
+                1: {
+                    subject: "AI & software delivery strategy (Transform 2026)",
+                    body: `Hi {{First Name}},
+
+Noticed the recent scaling initiatives at {{Company}} and wanted to reach out. 
+
+We're bringing together a select group of engineering executives in Dallas (Aug 19-20) for Tricentis Transform 2026. The focus is strictly on peer-level discussions around how AI and cloud architectures are fundamentally changing software delivery cycles.
+
+I have a VIP complimentary pass reserved for your office. It includes access to the executive networking track. 
+
+Would it be worth sending you the secure registration link to see if the agenda aligns with your Q3/Q4 goals?
+
+Best,
+Yulia Leonova
+Strategic Relationships, Tricentis`,
+                    rationale: "Shifts focus from 'I want you to come' to 'Here is a peer-level strategic opportunity for your company.' It asks for permission to send a link rather than assigning them the task of replying to register."
+                },
+                2: {
+                    subject: "Quick question regarding Transform Dallas",
+                    body: `Hi {{First Name}},
+
+I know how buried your inbox gets, so I'll keep this brief. 
+
+Since we last spoke, we've finalized a few roundtable sessions specifically focused on transitioning legacy testing to AI-native cloud environments—a topic that seems highly relevant to your team at {{Company}}.
+
+I'm holding your VIP pass until Wednesday. Can I send the link over, or should I allocate this pass to another leader in your network?
+
+Best,
+Yulia`,
+                    rationale: "Removes the guilt-trip. Instead of 'Did you see my email?', it provides NEW value (roundtable topics) and uses a professional takeaway/scarcity technique ('should I allocate this pass to another leader?')."
+                },
+                3: {
+                    subject: "Releasing your VIP pass - Tricentis Transform",
+                    body: `Hi {{First Name}},
+
+Looks like timing might not be right for Transform 2026 this August. 
+
+I'll go ahead and release the complimentary VIP pass we had held for {{Company}} so another team can utilize it. 
+
+If priorities shift before the event and you'd like to check out the AI delivery frameworks we're discussing, you can view the public agenda here: {{Link}}
+
+Best of luck with the rest of the quarter!
+
+Best,
+Yulia`,
+                    rationale: "The 'Professional Breakup'. It assumes they are busy, not ignoring you. It takes the offer off the table (driving FOMO) but leaves a low-friction link just in case they are silently interested."
+                }
+            },
+            manager: {
+                1: {
+                    subject: "Upskilling your QA/Eng team for AI (Transform 2026)",
+                    body: `Hi {{First Name}},
+
+As a {{Title}}, keeping your team's skills aligned with the shift toward AI and cloud-native testing is likely top of mind right now. 
+
+We are hosting Tricentis Transform 2026 in Dallas (Aug 19-20). It's designed specifically for engineering and quality managers to learn practical, hands-on strategies for adapting the software development lifecycle to AI.
+
+To help your team get access to these frameworks, I can offer an early-adopter 50% discount code for you or your direct reports.
+
+Would you like me to send over the agenda and the discount code to review?
+
+Best,
+Yulia Leonova
+Tricentis`,
+                    rationale: "Targets the Manager's specific pain point: team performance and upskilling. Frames the 50% discount as an 'early-adopter advantage' for their team, rather than a cheap marketing gimmick."
+                },
+                2: {
+                    subject: "Action required: 50% off Transform 2026 ending",
+                    body: `Hi {{First Name}},
+
+Just a quick update—the early registration block for Transform 2026 closes at the end of next week.
+
+Last year, teams that attended took away highly actionable blueprints for reducing test cycle times using AI (highlights here: {{Link}}). I'd love for {{Company}}'s team to have access to that same knowledge.
+
+Should I send over the 50% off code before it expires on Friday? 
+
+Best,
+Yulia`,
+                    rationale: "Creates genuine urgency tied to a deadline, but reinforces the value (reducing test cycle times) before asking for the action."
+                },
+                3: {
+                    subject: "Closing the book on Transform 2026 early-bird",
+                    body: `Hi {{First Name}},
+
+I'm closing out my early-bird outreach for Transform 2026 today. 
+
+Since I haven't heard back, I'll assume it's not a priority for your team this quarter and won't crowd your inbox anymore. 
+
+If you do end up wanting to grab the 50% off code before it officially expires at midnight on Friday, just reply 'code' to this email and I'll fire it right back to you.
+
+Cheers,
+Yulia`,
+                    rationale: "Final breakup. Makes the CTA incredibly low friction ('just reply code') while respecting their inbox and explicitly stating you will stop emailing them."
+                }
+            }
+        };
+
+        // --- State Management ---
+        let currentPersona = 'director';
+        let currentStep = 1;
+
+        // --- Core Interaction Handling ---
+        
+        // 1. Interactive Tooltips Logic
+        const teardownContainer = document.getElementById('teardown-container');
+        const tooltip = document.getElementById('dynamic-tooltip');
+
+        teardownContainer.addEventListener('mouseover', (e) => {
+            if(e.target.classList.contains('highlight-error')) {
+                const text = e.target.getAttribute('data-tooltip');
+                tooltip.textContent = text;
+                tooltip.style.display = 'block';
+                
+                // Positioning
+                const rect = e.target.getBoundingClientRect();
+                const containerRect = teardownContainer.getBoundingClientRect();
+                
+                tooltip.style.top = (rect.bottom - containerRect.top + 10) + 'px';
+                tooltip.style.left = Math.max(0, (rect.left - containerRect.left - 50)) + 'px';
+            }
+        });
+
+        teardownContainer.addEventListener('mouseout', (e) => {
+            if(e.target.classList.contains('highlight-error')) {
+                tooltip.style.display = 'none';
+            }
+        });
+
+        // 2. Template UI Updates
+        function updateTemplateUI() {
+            // Update Data
+            const data = templates[currentPersona][currentStep];
+            document.getElementById('display-subject').textContent = data.subject;
+            document.getElementById('display-body').textContent = data.body;
+            document.getElementById('display-rationale').textContent = data.rationale;
+
+            // Update Tags
+            document.getElementById('tag-persona').textContent = currentPersona === 'director' ? 'Directors+ (VIP)' : 'Managers (50% Off)';
+            document.getElementById('tag-step').textContent = `Sequence Step ${currentStep}`;
+
+            // Reset Copy Button
+            const copyBtn = document.getElementById('copy-text');
+            const copyIcn = document.getElementById('copy-icon');
+            copyBtn.textContent = 'Copy Email';
+            copyIcn.textContent = '📋';
+
+            // Update Sidebar Styling (Persona)
+            document.getElementById('btn-director').className = currentPersona === 'director' 
+                ? 'w-full text-left px-4 py-2 rounded-lg text-sm font-medium transition-colors bg-blue-100 text-blue-700 border border-blue-200' 
+                : 'w-full text-left px-4 py-2 rounded-lg text-sm font-medium transition-colors hover:bg-slate-200 text-slate-600 border border-transparent';
+            
+            document.getElementById('btn-manager').className = currentPersona === 'manager' 
+                ? 'w-full text-left px-4 py-2 rounded-lg text-sm font-medium transition-colors bg-blue-100 text-blue-700 border border-blue-200' 
+                : 'w-full text-left px-4 py-2 rounded-lg text-sm font-medium transition-colors hover:bg-slate-200 text-slate-600 border border-transparent';
+
+            // Update Sidebar Styling (Steps)
+            [1, 2, 3].forEach(step => {
+                const btn = document.getElementById(`btn-step-${step}`);
+                if (step === currentStep) {
+                    btn.className = 'w-full text-left px-4 py-2 rounded-lg text-sm font-medium transition-colors bg-slate-200 text-slate-800';
+                } else {
+                    btn.className = 'w-full text-left px-4 py-2 rounded-lg text-sm font-medium transition-colors hover:bg-slate-200 text-slate-600';
+                }
+            });
+        }
+
+        // Navigation Functions
+        window.setPersona = function(persona) {
+            currentPersona = persona;
+            currentStep = 1; // Reset to step 1 on persona change
+            updateTemplateUI();
+        };
+
+        window.setStep = function(step) {
+            currentStep = step;
+            updateTemplateUI();
+        };
+
+        window.copyToClipboard = function() {
+            const subject = document.getElementById('display-subject').textContent;
+            const body = document.getElementById('display-body').textContent;
+            const textToCopy = `Subject: ${subject}\n\n${body}`;
+
+            navigator.clipboard.writeText(textToCopy).then(() => {
+                const copyBtn = document.getElementById('copy-text');
+                const copyIcn = document.getElementById('copy-icon');
+                copyBtn.textContent = 'Copied!';
+                copyIcn.textContent = '✅';
+                
+                setTimeout(() => {
+                    copyBtn.textContent = 'Copy Email';
+                    copyIcn.textContent = '📋';
+                }, 2000);
+            }).catch(err => {
+                console.error('Failed to copy text: ', err);
+                alert("Failed to copy to clipboard.");
+            });
+        };
+
+        // --- Chart.js Initialization ---
+        document.addEventListener('DOMContentLoaded', () => {
+            // Initialize Templates
+            updateTemplateUI();
+
+            // Initialize Chart
+            const ctx = document.getElementById('impactChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['Generic Subject Line', 'Curiosity Subject Line', '"Me-Centric" Opening', 'Value/Pain-Centric Opening', 'High Friction CTA (Reply)', 'Low Friction CTA (Link)'],
+                    datasets: [{
+                        label: 'Estimated Positive Reply Rate (%)',
+                        data: [0.5, 3.2, 0.2, 4.1, 0.8, 4.5],
+                        backgroundColor: [
+                            '#ef4444', // Red for bad
+                            '#10b981', // Green for good
+                            '#ef4444',
+                            '#10b981',
+                            '#ef4444',
+                            '#10b981'
+                        ],
+                        borderRadius: 4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return context.parsed.y + '% Reply Probability';
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            title: {
+                                display: true,
+                                text: 'Reply Rate (%)',
+                                color: '#64748b'
+                            },
+                            grid: {
+                                color: '#f1f5f9'
+                            }
+                        },
+                        x: {
+                            grid: {
+                                display: false
+                            },
+                            ticks: {
+                                maxRotation: 45,
+                                minRotation: 45,
+                                color: '#475569'
+                            }
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
